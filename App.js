@@ -1,11 +1,10 @@
 import React from 'react';
-import Login from './Login';
-import Registration from './Registration';
-// Mudar a tag para vizualizar a outra tela
+import Routes from './navigation/Routes';
+
 export default function App() {
   return (
     <> 
-      <Login />
+      <Routes />
     </>
   );
 }
