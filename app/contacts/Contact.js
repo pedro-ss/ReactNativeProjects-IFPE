@@ -12,7 +12,7 @@ export default function Contact({contact}) {
         <View style={styles.containerList}>
             <TouchableOpacity onPress={() => navigation.navigate('CadastroContato', {
                 nome: contact.nome,
-                fone: contact.fone,
+                telefone: contact.telefone,
                 email: contact.email
             })
             }>
@@ -21,7 +21,7 @@ export default function Contact({contact}) {
                 </View>
                 <View style={{flexDirection: 'row', position: 'relative'}}>
                     <Text style={styles.contactText}>{contact.nome}</Text>
-                    <Text style={styles.contactText}>{contact.fone}</Text>
+                    <Text style={styles.contactText}>{contact.telefone}</Text>
                 </View>
             </TouchableOpacity>
         </View>

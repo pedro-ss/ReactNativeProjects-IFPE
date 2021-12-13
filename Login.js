@@ -48,7 +48,7 @@ function cadastrarUsuario() {
     });
 }
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   //const navigation = this.props.navigation;
@@ -72,7 +72,7 @@ export default function Login() {
           style={styles.basicInput} />
       </View>
       <View style={styles.loginButtons}>
-        <Button title="Login" accessibilityLabel="Login" onPress={() => signInWithEmailAndPassword(auth, email, senha)} color="#4169e1" />
+        <Button title="Login" accessibilityLabel="Login" onPress={() => {navigation.navigate('Listagem')}} color="#4169e1" />
       </View>
 
       <View style={styles.loginButtons}>

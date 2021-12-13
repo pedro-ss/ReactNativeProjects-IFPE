@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import Contact from '../contacts/Contact';
+import axios from 'axios'
+
  
 export default function Listagem() {
-  
-    let contatos = [] 
-    const listcontatos = [ 
-        {"nome":"Marcos Andrade", "fone":"81 98855-3424", "email":"mand@email.com" },
-        {"nome":"Patrícia Tavares", "fone":"81 99876-5332", "email":"pata@email.com"},
-        {"nome":"Rodrigo Antunes", "fone":"81 98776-5525", "email":"roan@email.com"}
-    ];
+    const [contatos, setContatos] = useState([]);
+    let listContatos = [];
+    useEffect(() => {    
+      function consultarContatos() {
+          axios.get('http://professornilson.com/testeservico/clientes')
+          .then(function (response) {
+              console.log(response.data);
+              setContatos(response.data);
+          }).catch(function (error) {
+              console.log(error);
+          });
+      }
+      consultarContatos();
+    },[]);
 
-    listcontatos.forEach(contact => {
-      contatos.push(
+    contatos.forEach(contact => {
+      listContatos.push(
         <Contact contact={contact}/>
         )
     })
@@ -20,7 +29,7 @@ export default function Listagem() {
   return (
     <View >
         <ScrollView >
-          {contatos}
+          {listContatos}
         </ScrollView>
     </View>
   );
