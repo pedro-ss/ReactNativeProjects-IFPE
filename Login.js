@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, Button } from 'react-native';
 import styleSheet from './Styles';
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
 const styles = styleSheet;
 
@@ -53,7 +54,7 @@ function socialLogin(provedor) {
   signInWithPopup(auth, provedor)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = provedor.credentialFromResult(result);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
 
       const token = credential.accessToken;
       // The signed-in user info.
